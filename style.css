@@ -10,6 +10,7 @@ div.cell{
  width: 25px;
 }
 
-div.cell:hover{
-    background-color: blue;
+.changed{
+    background-color: red;
 }
+
