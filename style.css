@@ -9,3 +9,7 @@ div.cell{
  height: 25px;
  width: 25px;
 }
+
+div.cell:hover{
+    background-color: blue;
+}
