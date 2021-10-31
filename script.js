@@ -1,4 +1,5 @@
 const container = document.createElement('div');
+const btn = document.querySelector('.reset');
 let gridRows;
 let gridColumns;
 let row;
@@ -25,10 +26,19 @@ function creatGrid(gridRows, gridColumns) {
     }
 }
 
+function resetgrid() {
+    const gridItems = document.querySelectorAll(".cell");
+        gridItems.forEach(element => {
+            element.style.backgroundColor = "aquamarine";
+        });
+}
 
 
 
 
-gridRows = prompt("how many rows do you want? ");
-gridColumns = prompt("how many columns do you want?");
-creatGrid(gridRows,gridColumns);
+
+
+gridRows = 24;//prompt("how many rows do you want? ");
+gridColumns = 24;//prompt("how many columns do you want?");
+creatGrid(gridRows, gridColumns);
+btn.addEventListener('click',function (){ resetgrid()});

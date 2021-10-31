@@ -1,5 +1,8 @@
 body{
-    height: 100vh;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    width: 960px;
 }
 .container{
     display: flex;
