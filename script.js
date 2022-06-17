@@ -1,44 +1,46 @@
-const container = document.createElement('div');
-const btn = document.querySelector('.reset');
+const container = document.querySelector(".container");
+const resetbtn = document.querySelector(".reset");
+const newGridbtn = document.querySelector(".new-grid");
+
 let gridRows;
 let gridColumns;
-let row;
-let cell;
 let spot;
-let k;
-container.className = 'container';
-document.body.appendChild(container);
+
 function creatGrid(gridRows, gridColumns) {
-    for (i = 0; i < gridRows; i++) {
-        row = document.createElement('div');
-        container.appendChild(row).className = "row";
+  container.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${gridRows}}, 1fr)`;
 
-        for (j = 0; j < gridColumns; j++) {
-            cell = document.createElement('div');
-            row.appendChild(cell).className = "cell";
-            cell.addEventListener("mouseover", function (e) {
-                spot = e.target;
-                spot.style.backgroundColor = "red";
-            })
+  for (let i = 0; i < gridRows * gridColumns; i++) {
+    let cell = document.createElement("div");
+    cell.className = "cell";
+    cell.addEventListener("mouseover", function (e) {
+      spot = e.target;
+      spot.style.backgroundColor = "red";
+    });
 
-        }
-
-    }
+    container.appendChild(cell);
+  }
 }
 
 function resetgrid() {
-    const gridItems = document.querySelectorAll(".cell");
-        gridItems.forEach(element => {
-            element.style.backgroundColor = "aquamarine";
-        });
+  const gridItems = document.querySelectorAll(".cell");
+  gridItems.forEach((element) => {
+    element.style.backgroundColor = "aquamarine";
+  });
 }
 
+function newGrid() {
+  let gridSize = +prompt("what what is the new size (Max 100): ");
+  gridColumns = gridSize;
+  gridRows = gridSize;
+  container.innerHTML = "";
+  creatGrid(gridRows, gridColumns);
+}
 
-
-
-
-
-gridRows = 24;//prompt("how many rows do you want? ");
-gridColumns = 24;//prompt("how many columns do you want?");
+gridRows = 50; //prompt("how many rows do you want? ");
+gridColumns = gridRows;
 creatGrid(gridRows, gridColumns);
-btn.addEventListener('click',function (){ resetgrid()});
+
+resetbtn.addEventListener("click", resetgrid);
+
+newGridbtn.addEventListener("click", newGrid);
